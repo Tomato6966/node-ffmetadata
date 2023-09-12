@@ -54,6 +54,14 @@ module.exports.read = function(src, options, callback) {
 	return stream;
 };
 
+/**
+ * 
+ * @param {string} src 
+ * @param {} data 
+ * @param {{dryRun?: boolean, encoder:? string}} options 
+ * @param {*} callback 
+ * @returns 
+ */
 module.exports.write = function(src, data, options, callback) {
 	if (typeof options === "function") {
 		callback = options;
@@ -163,7 +171,7 @@ function getWriteArgs(src, dst, data, options) {
 	});
 
 	// Copy flag in order to not transcode
-	args = args.concat(inputs, maps, ["-codec", "copy"]);
+	args = args.concat(inputs, maps, ["-codec", options.encoder ? `a ${encoder}`: "copy"]);
 
 	if (options["id3v1"]) {
 		args.push("-write_id3v1", "1");
