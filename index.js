@@ -171,7 +171,7 @@ function getWriteArgs(src, dst, data, options) {
 	});
 
 	// Copy flag in order to not transcode
-	args = args.concat(inputs, maps, ["-codec", options.encoder ? `a ${encoder}`: "copy"]);
+	args = args.concat(inputs, maps, ["-codec", options.encoder ? `a ${options.encoder}`: "copy"]);
 
 	if (options["id3v1"]) {
 		args.push("-write_id3v1", "1");
